@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -20,5 +21,9 @@ public class PersonService {
 
     public Person getPersonByItin(String itin) {
         return repository.getPersonByItin(itin);
+    }
+
+    public List<Person> getAll() {
+        return repository.findAll();
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -21,8 +22,13 @@ public class PersonResource {
         return new ResponseEntity<>(service.getPersonByItin(itin), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<Person> postPerson(@Valid @RequestBody Person person) {
         return new ResponseEntity<>(service.save(person), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Person>> getPersonList() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 }
